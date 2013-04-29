@@ -1,6 +1,7 @@
 $(document).ready(function(){
   var myVar;
   var t;
+  var pausado = true;
 
   function Tempo(){
     this.relogio = new Date();
@@ -11,8 +12,12 @@ $(document).ready(function(){
   }
 
   $("#comeca").click(function(){
+    if(!pausado)
+      return;
+
     myVar = setInterval(function(){myTimer()},1);
     t = new Tempo();
+    pausado = false;
 
     function myTimer(){
       t.relogio.setMilliseconds(t.relogio.getMilliseconds() + 1);
@@ -53,12 +58,20 @@ $(document).ready(function(){
   });
 
   $("#pausa").click(function(){
+    if(pausado)
+      return;
+
     if(myVar)
       clearInterval(myVar);
+    pausado = true;
   });
 
   $("#continua").click(function(){
+    if(!pausado)
+      return;
+
     myVar = setInterval(function(){myTimer()},1);
+    pausado = false;
 
     function myTimer(){
       t.relogio.setMilliseconds(t.relogio.getMilliseconds() + 1);
@@ -102,6 +115,7 @@ $(document).ready(function(){
     if(myVar)
       clearInterval(myVar);
     $("#timer").html("00:00:00:000");
+    pausado = true;
   });
 
 });
