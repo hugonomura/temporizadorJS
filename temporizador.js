@@ -112,13 +112,10 @@ $(document).ready(function(){
   });
 
   $("#reseta").click(function(){
-    if(!pausado)
-      return;
-    pausado = true;
-
     if(myVar)
       clearInterval(myVar);
     $("#timer").html("00:00:00:000");
+    pausado = true;
   });
 
 });
