@@ -2,6 +2,7 @@ $(document).ready(function(){
   var myVar;
   var t;
   var pausado = true;
+  var iniciou = false;
 
   function Tempo(){
     this.relogio = new Date();
@@ -18,6 +19,7 @@ $(document).ready(function(){
     myVar = setInterval(function(){myTimer()},1);
     t = new Tempo();
     pausado = false;
+    iniciou = true;
 
     function myTimer(){
       t.relogio.setMilliseconds(t.relogio.getMilliseconds() + 1);
@@ -67,7 +69,7 @@ $(document).ready(function(){
   });
 
   $("#continua").click(function(){
-    if(!pausado)
+    if(!pausado || !iniciou)
       return;
 
     myVar = setInterval(function(){myTimer()},1);
@@ -116,6 +118,8 @@ $(document).ready(function(){
       clearInterval(myVar);
     $("#timer").html("00:00:00:000");
     pausado = true;
+    t = new Tempo();
+    iniciou = false;
   });
 
 });
