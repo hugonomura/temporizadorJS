@@ -16,13 +16,13 @@ $(document).ready(function(){
     if(!pausado)
       return;
 
-    myVar = setInterval(function(){myTimer()},1);
+    myVar = setInterval(function(){myTimer()},1000);
     t = new Tempo();
     pausado = false;
     iniciou = true;
 
     function myTimer(){
-      t.relogio.setMilliseconds(t.relogio.getMilliseconds() + 1);
+      t.relogio.setMilliseconds(t.relogio.getMilliseconds() + 1000);
       var saida = "";
 
       if(t.relogio.getHours() < 10){
@@ -76,7 +76,7 @@ $(document).ready(function(){
     pausado = false;
 
     function myTimer(){
-      t.relogio.setMilliseconds(t.relogio.getMilliseconds() + 1);
+      t.relogio.setMilliseconds(t.relogio.getMilliseconds() + 1000);
       var saida = "";
 
       if(t.relogio.getHours() < 10){
